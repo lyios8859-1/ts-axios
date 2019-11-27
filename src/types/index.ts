@@ -1,5 +1,3 @@
-import { type } from 'os'
-
 /**
  * 项目的公共的全局类型文件
  */
