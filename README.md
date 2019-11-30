@@ -33,7 +33,7 @@ git pull origin master
 # 查看当前分支
 git branch
 
-# 使用 git-cz 替代 git commit -am
+# 使用 git-cz 替代 git commit -m 'description'
 npm run commit
 
 # 推送到远程仓库
