@@ -3,9 +3,12 @@ import { AxiosRequestConfig } from './types'
 import xhr from './xhr'
 import { buildURL } from './tools/url'
 import { transfromRequest } from './tools/data'
+import { processHeaders } from './tools/headers'
 
 function processConfig(config: AxiosRequestConfig): void {
   config.url = transfromURL(config)
+  // 顺序必须先处理headers
+  config.headers = transfromHeaders(config)
   config.data = transfromRequestData(config)
 }
 
@@ -18,6 +21,12 @@ function transfromURL(config: AxiosRequestConfig): string {
 // Body 参数解析
 function transfromRequestData(config: AxiosRequestConfig): any {
   return transfromRequest(config.data)
+}
+
+// 请求头解析
+function transfromHeaders(config: AxiosRequestConfig): any {
+  const { headers = {}, data } = config
+  return processHeaders(headers, data)
 }
 
 function axios(config: AxiosRequestConfig): void {
