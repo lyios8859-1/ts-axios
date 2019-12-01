@@ -1,8 +1,8 @@
-import { AxiosRequestConfig, AxiosPromise } from './types'
+import { AxiosRequestConfig, AxiosPromise, AxiosResonse } from './types'
 
 import xhr from './xhr'
 import { buildURL } from './tools/url'
-import { transfromRequest } from './tools/data'
+import { transfromRequest, transfromResponse } from './tools/data'
 import { processHeaders } from './tools/headers'
 
 function processConfig(config: AxiosRequestConfig): void {
@@ -29,9 +29,18 @@ function transfromHeaders(config: AxiosRequestConfig): any {
   return processHeaders(headers, data)
 }
 
+// 响应信息解析
+function transfromResponseData(res: AxiosResonse): AxiosResonse {
+  res.data = transfromResponse(res.data)
+  return res
+}
+
+// 访问的入口
 function axios(config: AxiosRequestConfig): AxiosPromise {
   processConfig(config)
-  return xhr(config)
+  return xhr(config).then(res => {
+    return transfromResponseData(res)
+  })
 }
 
 export default axios
