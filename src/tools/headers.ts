@@ -25,3 +25,24 @@ export function processHeaders(headers: any, data: any): any {
   }
   return headers
 }
+
+// 将返回的 hearders 信息 格式化为对象形式返回
+export function parseHeaders(headers: string): any {
+  const parsed = Object.create(null)
+  if (!headers) {
+    return parsed
+  }
+  // 分割返回的 headers 字符串, 它是以回车换行结尾的 \r\n
+  headers.split('\r\n').forEach(line => {
+    let [key, val] = line.split(':')
+    key = key.trim().toLowerCase()
+    if (!key) {
+      return
+    }
+    if (val) {
+      val = val.trim()
+    }
+    parsed[key] = val
+  })
+  return parsed
+}
