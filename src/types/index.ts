@@ -36,4 +36,4 @@ export interface AxiosResonse {
   request: any
 }
 
-export interface AxiosPromise extends Promise<AxiosPromise> {}
+export interface AxiosPromise extends Promise<AxiosResonse> {}

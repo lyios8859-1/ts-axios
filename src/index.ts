@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from './types'
+import { AxiosRequestConfig, AxiosPromise } from './types'
 
 import xhr from './xhr'
 import { buildURL } from './tools/url'
@@ -29,9 +29,9 @@ function transfromHeaders(config: AxiosRequestConfig): any {
   return processHeaders(headers, data)
 }
 
-function axios(config: AxiosRequestConfig): void {
+function axios(config: AxiosRequestConfig): AxiosPromise {
   processConfig(config)
-  xhr(config)
+  return xhr(config)
 }
 
 export default axios

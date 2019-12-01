@@ -62,6 +62,42 @@ import axios from '../../src/index';
 // });
 
 // post 请求
+// axios({
+//   method: 'post',
+//   url: '/base/post',
+//   data: {
+//     name: 'Tom',
+//     age: 23
+//   }
+// });
+
+// const arr = new Int32Array([21, 31]);
+// axios({
+//   method: 'post',
+//   url: '/base/buffer',
+//   data: arr
+// });
+// // post 请求配置 headers
+// axios({
+//   method: 'post',
+//   headers: {
+//     'content-type': 'application/json',
+//     'Accept': 'application/json, text/plain, */*'
+//   },
+//   url: '/base/post',
+//   data: {
+//     name: 'Tom',
+//     age: 23
+//   }
+// });
+// const paramsStrng = 'q=URLUtils.searchParams&topic=api';
+// const searchParams = new URLSearchParams(paramsStrng);
+// axios({
+//   method: 'post',
+//   url: '/base/post',
+//   data: searchParams
+// });
+
 axios({
   method: 'post',
   url: '/base/post',
@@ -69,31 +105,18 @@ axios({
     name: 'Tom',
     age: 23
   }
+}).then(res => {
+  console.log(res)
 });
 
-const arr = new Int32Array([21, 31]);
 axios({
   method: 'post',
-  url: '/base/buffer',
-  data: arr
-});
-// post 请求配置 headers
-axios({
-  method: 'post',
-  headers: {
-    'content-type': 'application/json',
-    'Accept': 'application/json, text/plain, */*'
-  },
   url: '/base/post',
   data: {
     name: 'Tom',
     age: 23
-  }
-});
-const paramsStrng = 'q=URLUtils.searchParams&topic=api';
-const searchParams = new URLSearchParams(paramsStrng);
-axios({
-  method: 'post',
-  url: '/base/post',
-  data: searchParams
+  },
+  responseType: 'json'
+}).then(res => {
+  console.log(res)
 });
