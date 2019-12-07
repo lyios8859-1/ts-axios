@@ -11,3 +11,12 @@ export function isDate(val: any): val is Date {
 export function isPlainObject(val: any): val is Object {
   return toString.call(val) === '[object Object]'
 }
+
+// mixin
+export function extend<T, U>(to: T, from: U): T & U {
+  for (const key in from) {
+    // 这里的类型断言 懵
+    ;(to as T & U)[key] = from[key] as any
+  }
+  return to as T & U
+}

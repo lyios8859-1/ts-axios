@@ -1,8 +1,8 @@
 // 测试时候运行 npm run server
-import { AxiosRequestConfig, AxiosPromise, AxiosResonse } from './types/index'
+import { AxiosRequestConfig, AxiosPromise, AxiosResonse } from '../types/index'
 
-import { parseHeaders } from './tools/headers'
-import { createError } from './tools/error'
+import { parseHeaders } from '../tools/headers'
+import { createError } from '../tools/error'
 
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
@@ -17,7 +17,8 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       request.timeout = timeout
     }
 
-    request.open(method.toUpperCase(), url, true)
+    // ！ 表示这个 url 不可能为空
+    request.open(method.toUpperCase(), url!, true)
 
     request.onreadystatechange = function handleLoad() {
       if (request.readyState !== 4) {
