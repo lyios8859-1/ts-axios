@@ -9,10 +9,10 @@ typescript 实现简单的 axios 库
 
 ```bash
 # 克隆脚手架
-git clone https://github.com/alexjoverm/typescript-library-starter.git tx-axios # (You Floder Name)
+git clone https://github.com/alexjoverm/typescript-library-starter.git ts-axios # (You Floder Name)
 
 # 切换到项目工作目录
-cd tx-axios # (You Floder Name)
+cd ts-axios # (You Floder Name)
 
 # 安装包
 npm install [--registry=https://registry.npm.taobao.org]
@@ -38,5 +38,4 @@ npm run commit
 
 # 推送到远程仓库
 git push origin master
-
 ```
